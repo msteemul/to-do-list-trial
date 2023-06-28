@@ -46,7 +46,7 @@ export const Todo = () => {
     (index: number): React.FormEventHandler<HTMLFormElement> =>
     (data: any) => {
       data = register('todo', { required: true });
-      console.log(data);
+      console.log(data, index);
       // setEditIndex(-1);
     };
 
