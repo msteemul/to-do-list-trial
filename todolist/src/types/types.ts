@@ -5,8 +5,3 @@ export interface TodoFormProps {
         completed: boolean;
     };
 }
-
-
-export interface EditTodoFormProps {
-    todoEdit:string;
-}

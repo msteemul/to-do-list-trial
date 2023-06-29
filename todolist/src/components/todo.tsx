@@ -6,20 +6,21 @@ import { AiFillDelete } from 'react-icons/ai';
 import { useForm } from 'react-hook-form';
 import 'react-tooltip/dist/react-tooltip.css';
 import { Tooltip } from 'react-tooltip';
+import {TodoFormProps} from '../types/types'
 
-export interface TodoFormProps {
-  id: number;
-  todo: {
-    data: string;
-    completed: boolean;
-  };
-}
 
 export const Todo = () => {
   const [editIndex, setEditIndex] = useState<number>(-1);
   const { register, handleSubmit, reset } = useForm<TodoFormProps>();
   const [todos, setTodos] = useState<TodoFormProps[]>([]);
   const [edited, setEdited] = useState('');
+
+  /**
+   * 
+   * @param data 
+   * @returns
+   * data is pushed to todos array
+   */
 
   const onSubmit = (data: TodoFormProps) => {
     const todo = {
@@ -33,6 +34,12 @@ export const Todo = () => {
     console.log(todos);
     reset();
   };
+  /**
+   * 
+   * @param index 
+   * @returns
+   * index of todo is set to editIndex
+   */
 
   const deleteTodo = (index: number) => {
     setTodos((prevTodos) => {
@@ -42,6 +49,13 @@ export const Todo = () => {
     });
   };
 
+  /**
+   * 
+   * @param index 
+   * @returns 
+   * index of todo is set to editIndex
+   */
+
   const handleEdit =
     (index: number): React.FormEventHandler<HTMLFormElement> =>
     (data: any) => {
@@ -50,6 +64,12 @@ export const Todo = () => {
       // setEditIndex(-1);
     };
 
+    /**
+     * 
+     * @param index 
+     * @returns
+     * array of todos is copied to updatedTodos
+     */
   const editedUpdate = (index: number) => {
     console.log('edited', edited);
     setTodos((prevTodos) => {
@@ -61,11 +81,24 @@ export const Todo = () => {
     setEditIndex(-1);
   };
 
+  /**
+   * 
+   * @param e 
+   * @returns
+   * value of input is set to edited
+   */
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setEdited(value);
     console.log(edited);
   };
+
+  /**
+   * 
+   * @param index 
+   * @returns
+   */
 
   const completed = (index: number) => {
     setTodos((prevTodos) => {
