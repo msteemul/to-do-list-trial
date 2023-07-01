@@ -174,7 +174,7 @@ export const Todo = () => {
                   {editIndex === index ? (
                     <></>
                   ) : (
-                    <div className='h-[50px] w-[40%] rounded-xl p-3 flex items-center justify-evenly'>
+                    <div className='h-[50px] w-[40%] rounded-xl p-3 flex items-center justify-evenly min-w-[200px]'>
                       <button
                         data-tooltip-id='my-tooltip'
                         onClick={() => completed(index)}
